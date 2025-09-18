@@ -9,7 +9,7 @@
   # Directorio de publicación donde se almacenan los archivos construidos
   publish = "dist"  # Si usas Vite, es común usar "dist" como directorio de salida
   # Comando de compilación que se ejecutará para construir tu proyecto
-  command = "npm run build"
+  command = "npm install --legacy-peer-deps && npm run build"  # Cambié el comando a incluir la instalación también
 
 [build.environment]
   # Especifica la versión de Node.js para usar en el build
