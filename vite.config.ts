@@ -5,18 +5,15 @@ export default defineConfig({
   plugins: [react()],
   assetsInclude: ['**/*.gltf', '**/*.glb'],
   build: {
-    outDir: 'dist', // Directorio de salida
-    sourcemap: true, // Puedes activar los sourcemaps para depuración si es necesario
+    outDir: 'dist',
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: {
-          three: ['three'], // Mantén `three` como un chunk separado
-          'react-three': ['@react-three/fiber', '@react-three/drei'], // Mantén `react-three` en su propio chunk
+          three: ['three'],
+          'react-three': ['@react-three/fiber', '@react-three/drei'],
         }
       }
     }
-  },
-  esbuild: {
-    logOverride: { 'this-is-undefined-in-esm': 'silent' } // Esto es útil si encuentras problemas con "this"
   }
 })
