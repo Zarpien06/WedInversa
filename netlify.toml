@@ -1,14 +1,15 @@
+[[redirects]]
+  # Redirige todas las rutas hacia index.html (para SPA)
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true  # Asegúrate de forzar la redirección para todas las rutas
+
 [build]
   # Directorio de publicación donde se almacenan los archivos construidos
   publish = "dist"  # Si usas Vite, es común usar "dist" como directorio de salida
   # Comando de compilación que se ejecutará para construir tu proyecto
   command = "npm run build"
-
-[[redirects]]
-  # Redirección de todas las rutas hacia index.html (para SPA)
-  from = "/*"
-  to = "/index.html"
-  status = 200
 
 [build.environment]
   # Especifica la versión de Node.js para usar en el build
