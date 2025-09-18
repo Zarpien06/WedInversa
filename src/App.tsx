@@ -1,19 +1,12 @@
-import React, { Suspense, useState, useRef, useEffect } from  'react';
+import { Suspense, useState, useRef, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { 
   OrbitControls, 
   PerspectiveCamera, 
   Environment, 
-  Float, 
-  Text3D, 
-  Center,
+  Float,
   Sparkles,
-  Stars,
-  Html,
-  useTexture,
-  Sphere,
-  Box,
-  Torus
+  Stars
 } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as THREE from 'three';
@@ -67,30 +60,6 @@ function InteractiveSphere({ position, color, scale = 1 }: { position: [number, 
   );
 }
 
-// Componente de texto 3D flotante
-function FloatingText({ text, position }: { text: string, position: [number, number, number] }) {
-  return (
-    <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1}>
-      <Center position={position}>
-        <Text3D
-          font="/fonts/helvetiker_regular.typeface.json"
-          size={0.5}
-          height={0.1}
-          curveSegments={12}
-          bevelEnabled
-          bevelThickness={0.02}
-          bevelSize={0.02}
-          bevelOffset={0}
-          bevelSegments={5}
-        >
-          {text}
-          <meshStandardMaterial color="#ffffff" metalness={0.5} roughness={0.5} />
-        </Text3D>
-      </Center>
-    </Float>
-  );
-}
-
 // Componente de partículas interactivas
 function ParticleField() {
   const points = useRef<THREE.Points>(null);
@@ -127,7 +96,7 @@ function ParticleField() {
         />
         <bufferAttribute
           attach="attributes-color"
-          count={particleCount}
+          count={particleCount}  
           array={colors}
           itemSize={3}
         />
@@ -171,10 +140,6 @@ function Scene3D() {
       <InteractiveSphere position={[0, 0, 3]} color="#45b7d1" scale={1} />
       <InteractiveSphere position={[-2, -3, -1]} color="#f9ca24" scale={0.9} />
       <InteractiveSphere position={[4, 1, 1]} color="#f0932b" scale={1.1} />
-      
-      {/* Texto flotante */}
-      <FloatingText text="INMERSIVO" position={[0, 3, 0]} />
-      <FloatingText text="FUTURO" position={[0, -4, 0]} />
     </>
   );
 }
